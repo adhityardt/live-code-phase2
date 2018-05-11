@@ -31,11 +31,17 @@
             methods: {
                 add () {
                     this.persons.push(this.name)
-                    localStorage.setItem('token')
+                    localStorage.setItem('token', 'secret')
                     axios
                         .post('35.198.212.156/request-token', {
                         name: this.name,
                         email: this.email
+                        })
+                        .then (response => {
+                            this.isLogin = true
+                        })
+                        .catch(err => {
+                            console.log(err)
                         })
                 }
             },
